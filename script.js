@@ -10,13 +10,20 @@ var charCollector = "";
 var generateBtn = document.querySelector("#generate"); 
 
 
+// Need to take in password length and use it.
+// Need to randomize output. 
+
+
 function generatePassword() {
   var passwordPrompt = parseInt(
     window.prompt("Choose password length from 8-128 characters.")
   );
   console.log(passwordPrompt) 
 
-    if (passwordPrompt >= 8 && passwordPrompt <= 128)
+    if (passwordPrompt < 8 || passwordPrompt > 128 || !passwordPrompt) {alert("Please enter a valid number");
+  return generatePassword();
+}
+
       var confirmCharNumber = confirm("Do you want to include numbers?");
       console.log(confirmCharNumber)
       var confirmCharUpper = confirm("Do you want to include upper case letters?");
@@ -43,19 +50,25 @@ function generatePassword() {
     console.log
   }
 
+  var randomPassword = ""
+  for (let i = 0; i < passwordPrompt; i++) {
+    var randomIndex = Math.floor(Math.random() * charCollector.length)
+    var randomChar = charCollector[randomIndex];
+    randomPassword += randomChar
+  }
   // prompt user for password criteria
 
-
-  // Need to use .length and random.Math somewhere...JV
-
-console.log(charCollector)
-  return "Generated Password " + charCollector;
+  return `Generated Password: 
+  
+  
+${randomPassword}`;
 }
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  // Math.floor(Math.random(generatePassword));
 
   passwordText.value = password; 
 
