@@ -52,11 +52,14 @@ function generatePassword() {
     console.log
   }
 
-  else {
-    confirmCharLower && confirmCharNumber && confirmCharSpecial && confirmCharUpper === null
+  else if (
+    confirmCharUpper === false && 
+    confirmCharSpecial === false &&
+    confirmCharNumber === false &&
+    confirmCharLower === false){
     alert("Must choose atleast one option.")
     return generatePassword();
-  }
+}
 
   var randomPassword = ""
   for (let i = 0; i < passwordPrompt; i++) {
@@ -74,7 +77,6 @@ ${randomPassword}`;
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  // Math.floor(Math.random(generatePassword));
 
   passwordText.value = password; 
 
