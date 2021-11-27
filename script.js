@@ -20,7 +20,9 @@ function generatePassword() {
   );
   console.log(passwordPrompt) 
 
-    if (passwordPrompt < 8 || passwordPrompt > 128 || !passwordPrompt) {alert("Please enter a valid number");
+    if (passwordPrompt < 8 || passwordPrompt > 128 || !passwordPrompt) 
+    
+    {alert("Please enter a valid number!");
   return generatePassword();
 }
 
@@ -50,17 +52,21 @@ function generatePassword() {
     console.log
   }
 
+  else {
+    confirmCharLower && confirmCharNumber && confirmCharSpecial && confirmCharUpper === null
+    alert("Must choose atleast one option.")
+    return generatePassword();
+  }
+
   var randomPassword = ""
   for (let i = 0; i < passwordPrompt; i++) {
     var randomIndex = Math.floor(Math.random() * charCollector.length)
     var randomChar = charCollector[randomIndex];
     randomPassword += randomChar
   }
-  // prompt user for password criteria
 
   return `Generated Password: 
-  
-  
+
 ${randomPassword}`;
 }
 
